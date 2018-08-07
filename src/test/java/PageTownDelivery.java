@@ -41,7 +41,7 @@ public class PageTownDelivery {
 
 
     }
-
+    //REVIEW можно ли дать переменной х "понятное" имя?
     public void CheckGoods(int x)
     {
         GoodsCount=driver.findElements(GoodsLocator).size();

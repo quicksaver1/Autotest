@@ -9,22 +9,29 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
-//test review
+
+//
+// REVIEW
 //
 public class Maintest {
     private static WebDriver driver;
-    private static Actions action;
+    private static Actions action; //REVIEW мертвый код
     private static ChromeOptions options = new ChromeOptions();
-    private static WebDriverWait wait;
+    private static WebDriverWait wait; //REVIEW мертвый код
     @BeforeClass
     public static void Setup() {
+        //REVIEW давай реализуем класс Setting,
+        // где будет создаваться и настраиваться драйвер
+        // а в этом методе останется только "создать драйвер"
+        // "открыть страницу"
+        //
         options.addArguments("--disable-notifications");
         String root = System.getProperty("user.dir");
         root = root + "//src//chromedriver//chromedriver";
         System.setProperty("webdriver.chrome.driver", root);
         driver = new ChromeDriver(options);
-        Actions action = new Actions(driver);
-        WebDriverWait wait = new WebDriverWait(driver,10);
+        Actions action = new Actions(driver); //REVIEW мертвый код
+        WebDriverWait wait = new WebDriverWait(driver,10); //REVIEW мертвый код
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
@@ -52,8 +59,15 @@ public class Maintest {
         Secondpage.Search("пицца пепперони");
         // 9.Проверяет, что товаров в списке 4.
         // 10.Проверяет,что у всех товаров есть кнопка “в корзину”.
+        //
+        // REVIEW
+        // по пункту 9 и 10  должны быть проверки,
+        // оформленные с помощью Assert
+        //
         Secondpage.CheckGoods(4);
-
+        //
+        // REVIEW
+        // кому энтеры оставил?
 
 
 

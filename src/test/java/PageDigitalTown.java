@@ -18,7 +18,7 @@ public class PageDigitalTown {
         {
             throw new IllegalStateException("Неверное название страницы. " +driver.getTitle());
         }
-        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebDriverWait wait = new WebDriverWait(driver,10); //REVIEW мертвый код
 
     }
     public void ClickTD()
@@ -49,11 +49,11 @@ public class PageDigitalTown {
         }
         try {
 
-            String winHandleBefore = driver.getWindowHandle();
+            String winHandleBefore = driver.getWindowHandle(); //REVIEW мертвый код
 
             for(String winHandle : driver.getWindowHandles()){
                 driver.switchTo().window(winHandle);
-                String act = driver.getCurrentUrl();
+                String act = driver.getCurrentUrl(); //REVIEW мертвый код
             }
         }catch(Exception e){
             System.out.println("fail");
