@@ -1,9 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageDigitalTown {
     By appsLocator = By.xpath("//*[@class='presentation__header']/*[@class='container']");
@@ -18,7 +15,6 @@ public class PageDigitalTown {
         {
             throw new IllegalStateException("Неверное название страницы. " +driver.getTitle());
         }
-        WebDriverWait wait = new WebDriverWait(driver,10); //REVIEW мертвый код
 
     }
     public void ClickTD()
@@ -49,11 +45,9 @@ public class PageDigitalTown {
         }
         try {
 
-            String winHandleBefore = driver.getWindowHandle(); //REVIEW мертвый код
 
             for(String winHandle : driver.getWindowHandles()){
                 driver.switchTo().window(winHandle);
-                String act = driver.getCurrentUrl(); //REVIEW мертвый код
             }
         }catch(Exception e){
             System.out.println("fail");

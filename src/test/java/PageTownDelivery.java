@@ -41,22 +41,16 @@ public class PageTownDelivery {
 
 
     }
-    //REVIEW можно ли дать переменной х "понятное" имя?
-    public void CheckGoods(int x)
+    public void CheckGoods(int TheMostClearArgumentNameInTheWorldThatDescribesExpectedAmountOfGoods)
     {
+        int x = TheMostClearArgumentNameInTheWorldThatDescribesExpectedAmountOfGoods;
         GoodsCount=driver.findElements(GoodsLocator).size();
         WebElement Goods [] = new WebElement[GoodsCount];
         driver.findElements(GoodsLocator).toArray(Goods);
-        if (!(GoodsCount == x))
-        {
-            System.out.println("Неверное количество товаров: "+ GoodsCount);
-        }
+        assert !(GoodsCount == x):"Неверное количество товаров: "+ GoodsCount;
         for (int i=0;i<GoodsCount;i++)
         {
-            if (Goods[i].findElements(CartLocator).size()==0)
-            {
-                System.out.println("Нет кнопки 'В корзину' у товара №"+(i+1));
-            }
+            assert Goods[i].findElements(CartLocator).size()==0: "Нет кнопки 'В корзину' у товара №"+(i+1);
         }
     }
 }

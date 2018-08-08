@@ -2,39 +2,14 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
 
-//
-// REVIEW
-//
 public class Maintest {
     private static WebDriver driver;
-    private static Actions action; //REVIEW мертвый код
-    private static ChromeOptions options = new ChromeOptions();
-    private static WebDriverWait wait; //REVIEW мертвый код
+    private static Setting setting=new Setting();
     @BeforeClass
     public static void Setup() {
-        //REVIEW давай реализуем класс Setting,
-        // где будет создаваться и настраиваться драйвер
-        // а в этом методе останется только "создать драйвер"
-        // "открыть страницу"
-        //
-        options.addArguments("--disable-notifications");
-        String root = System.getProperty("user.dir");
-        root = root + "//src//chromedriver//chromedriver";
-        System.setProperty("webdriver.chrome.driver", root);
-        driver = new ChromeDriver(options);
-        Actions action = new Actions(driver); //REVIEW мертвый код
-        WebDriverWait wait = new WebDriverWait(driver,10); //REVIEW мертвый код
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        driver = setting.CreateDriver();
         //1.Пользователь открывает сайт
         driver.get("http://xn--c1a1b.xn--p1ai/");
 
@@ -59,21 +34,7 @@ public class Maintest {
         Secondpage.Search("пицца пепперони");
         // 9.Проверяет, что товаров в списке 4.
         // 10.Проверяет,что у всех товаров есть кнопка “в корзину”.
-        //
-        // REVIEW
-        // по пункту 9 и 10  должны быть проверки,
-        // оформленные с помощью Assert
-        //
         Secondpage.CheckGoods(4);
-        //
-        // REVIEW
-        // кому энтеры оставил?
-
-
-
-
-
-
     }
 
     @AfterClass
